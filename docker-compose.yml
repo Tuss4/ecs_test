@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    command: gunicorn --reload -b 0.0.0.0:8000 hello:app -w 4 -k uvicorn.workers.UvicornWorker
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    
